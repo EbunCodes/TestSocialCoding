@@ -1,0 +1,193 @@
+!pip install kaggle
+
+import os
+import json
+import zipfile
+import pandas as pd
+
+import pandas as pd
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+print(df.head())
+print(df.info())
+
+
+#Age vs Depression Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+sns.set(style="whitegrid")
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df, x="Age", y="Depression", alpha=0.6, s=60, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Depression", scatter=False, color="red", line_kws={"linewidth":2})
+
+plt.title("Relationship Between Age and Depression", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Depression Level", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.4)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs Academic Pressure Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="Academic Pressure", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Academic Pressure", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Academic Pressure vs Age", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Academic Pressure", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs Job Satisfaction Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="Job Satisfaction", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Job Satisfaction", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Age vs Job Satisfaction", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Job Satisfaction", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs Work Pressure Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="Work Pressure", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Work Pressure", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Age vs Work Pressure", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Work Pressure", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs Finacial Stress Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+df['Financial Stress'] = pd.to_numeric(df['Financial Stress'], errors='coerce')
+
+df = df.dropna(subset=['Age', 'Financial Stress'])
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="Financial Stress", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Financial Stress", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Age vs Financial Stress", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Financial Stress", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs Work/Study Hours Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+df['Work/Study Hours'] = pd.to_numeric(df['Work/Study Hours'], errors='coerce')
+
+df = df.dropna(subset=['Age', 'Work/Study Hours'])
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="Work/Study Hours", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="Work/Study Hours", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Age vs Work/Study Hours", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("Work/Study Hours", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
+
+# Age vs CGPA Graph
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/cassidyfleger/Desktop/student_depression_dataset.csv"
+df = pd.read_csv(file_path)
+
+df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+df['CGPA'] = pd.to_numeric(df['CGPA'], errors='coerce')
+
+df = df.dropna(subset=['Age', 'CGPA'])
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(data=df, x="Age", y="CGPA", s=70, alpha=0.7, edgecolor="w")
+sns.regplot(data=df, x="Age", y="CGPA", scatter=False, color="red", line_kws={"linewidth": 2})
+
+plt.title("Age vs CGPA", fontsize=16)
+plt.xlabel("Age", fontsize=12)
+plt.ylabel("CGPA", fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.3)
+plt.tight_layout()
+
+plt.show()
+
