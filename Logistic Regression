@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+
+np.random.seed(42)
+age = np.random.randint(18, 60, size=300)
+depression = (age < 25).astype(int)
+
+df = pd.DataFrame({"Age": age, "Depression": depression})
+
+X = df[["Age"]]
+y = df["Depression"]
+model = LogisticRegression()
+model.fit(X, y)
+
+age_range = np.arange(18, 61).reshape(-1, 1)
+predicted_probs = model.predict_proba(age_range)[:, 1]
+
+plt.figure(figsize=(12, 6))
+
+sns.scatterplot(x=df["Age"], y=df["Depression"], alpha=0.4)
+
+plt.plot(age_range.flatten(), predicted_probs, color='red', linewidth=2, label="Logistic Regression Curve")
+
+plt.xlim(18, 60)
+plt.xticks(np.arange(18, 61, 2))
+plt.ylim(-0.1, 1.1)
+
+plt.title("Logistic Regression: Probability of Depression by Age")
+plt.xlabel("Age")
+plt.ylabel("Depression (0 = No, 1 = Yes)")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
